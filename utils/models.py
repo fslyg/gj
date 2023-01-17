@@ -21,13 +21,20 @@ class API(BaseModel):
 
     def replace_data(self, content: Union[str, dict], phone: str) -> str:
         # 统一转换成 str 再替换. ' -> "
+        # 对于内容本身有 '或者"的这样做法会导致拿的不是想要的东西 比如 这条就json失败的
+        # {
+        #     "phone": "[phone]",
+        #     "country_num": "[name='country_num']",
+        #     "type": "0"
+        # }
         if phone:
             content = str(content).replace("[phone]", phone).replace(
-                "[timestamp]", self.timestamp_new()).replace("'", '"')
+                "[timestamp]", self.timestamp_new())   # .replace("'", '"')
 
         # 尝试 json 化
         try:
-            return json.loads(content.replace("'", '"'))
+            return eval(content)  # 改为eval 虽然也不严谨不过暂时也能用
+            # return json.loads(content.replace("'", '"'))
         except:
             return content
 
@@ -46,8 +53,7 @@ class API(BaseModel):
         if phone:
             # 进入的 header 是个字符串
             if self.header == "":
-                self.header = {}
-                self.header['Referer'] = self.url  # 增加 Referer
+                self.header = {'Referer': self.url}
 
         self.header = self.replace_data(self.header, phone)
         if not self.header.get('Referer'):

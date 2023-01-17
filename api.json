@@ -81,20 +81,6 @@
         "data": "submit=1&requestHash=c2592a6dr9x510&country=86&mobile=[phone]&captcha=&randomNumber=0undefined7952784010774208"
     },
     {
-        "desc": "广东高考报名web",
-        "url": "https://pg.eeagd.edu.cn/ks/public/kszc/zcyzm.jsmeb",
-        "method": "POST",
-        "header": "",
-        "data": "[phone]"
-    },
-    {
-        "desc": "广东教育翔云",
-        "url": "https://gl.gdedu.gov.cn/api-service/captcha?phoneNumber=[phone]&captchaType=QUERY_ADMIN",
-        "method": "GET",
-        "header": "",
-        "data": ""
-    },
-    {
         "desc": "迪卡侬",
         "url": "https://www.decathlon.com.cn/zh/ajax/rest/model/atg/userprofiling/ProfileActor/send-mobile-verification-code",
         "method": "POST",
@@ -105,7 +91,7 @@
         }
     },
     {
-        "desc": "股海网",
+        "desc": "股海网(一天单号码只能3次",
         "url": "https://www.guhai.com.cn/front/member/sendSmsCode",
         "method": "POST",
         "header": "",
@@ -117,7 +103,10 @@
         "desc": "LLL的个人blog",
         "url": "http://www.lll.plus/sendCode/",
         "method": "POST",
-        "header": "",
+        "header": {
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
+                "X-Requested-With": "XMLHttpRequest"
+        },
         "data": {
             "tel": "[phone]",
             "forgetPwd": ""
@@ -133,17 +122,6 @@
         }
     },
     {
-        "desc": "蒲公英",
-        "url": "https://id.pgyer.com/user/getRegisterCode",
-        "method": "POST",
-        "header": "",
-        "data": {
-            "tel": "[phone]",
-            "callingCode": "86",
-            "mode": "tel"
-        }
-    },
-    {
         "desc": "百卓优采",
         "url": "https://erp.abiz.com/mobilecode/sendMobileCode",
         "method": "POST",
@@ -151,16 +129,6 @@
         "data": {
             "mobile": "[phone]",
             "captcha": ""
-        }
-    },
-    {
-        "desc": "云背篓",
-        "url": "https://brand.yunbeilou.com/index.php/smssend",
-        "method": "POST",
-        "header": "",
-        "data": {
-            "phone": "[phone]",
-            "v": "yes"
         }
     },
     {
@@ -800,6 +768,21 @@
         "data": {
             "to": "[phone]",
             "sms_type": "sms_registration"
+        }
+    },
+    {
+        "desc": "慧联天下",
+        "url": "https://www.dtb315.com/home/public/skip_identify_code",
+        "method": "POST",
+        "header": {
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
+            "x-requested-with": "XMLHttpRequest"
+        },
+        "data": {
+            "phone": "[phone]",
+            "country_num": "[name='country_num']",
+            "type": "0"
         }
     }
 ]

@@ -1,0 +1,44 @@
+ [
+     {
+          "desc": "广东高考报名web",
+          "url": "https://pg.eeagd.edu.cn/ks/public/kszc/zcyzm.jsmeb",
+          "method": "POST",
+          "header": "",
+          "data": "[phone]",
+          "web_url": "https://pg.eeagd.edu.cn/ks/reg/#/",
+          "problem": "发送短信所需内容涉及个人隐私"
+     },
+     {
+      "desc": "广东教育翔云",
+      "url": "https://gl.gdedu.gov.cn/api-service/captcha?phoneNumber=[phone]&captchaType=QUERY_ADMIN",
+      "method": "GET",
+      "header": "",
+      "data": "",
+      "web_url": "https://gl.gdedu.gov.cn/api-service/jumpIndex",
+      "problem": "有验证码保护，有空再写识别验证码请求的逻辑"
+    },
+    {
+        "desc": "蒲公英",
+        "url": "https://id.pgyer.com/user/getRegisterCode",
+        "method": "POST",
+        "header": "",
+        "data": {
+            "tel": "[phone]",
+            "callingCode": "86",
+            "mode": "tel"
+        },
+      "web_url": "https://id.pgyer.com/user/login?mode=tel&bind=",
+      "problem": "有滑块验证码"
+    },
+    {
+        "desc": "云背篓",
+        "url": "https://brand.yunbeilou.com/index.php/smssend",
+        "method": "POST",
+        "header": "",
+        "data": {
+            "phone": "[phone]",
+            "v": "yes"
+        },
+        "problem": "该网站已取消短信功能"
+    }
+ ]
